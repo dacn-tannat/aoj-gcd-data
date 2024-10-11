@@ -1,4 +1,4 @@
-from services.data_services import *
+from services import *
 
 if __name__ == '__main__':
-    data = process_data()
+    data = process_data('raw_data_c.json')
