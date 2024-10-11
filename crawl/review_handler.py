@@ -1,14 +1,14 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from fetch import *
+from .fetch import *
 
-def get_review_data(judge_id: str):
+def get_review_data(judge_id, status):
     review = fetch_review_by_judge_id(judge_id)
     
     if review and review.get('policy') != 'private' and review.get('sourceCode'):
         return {
             'judge_id': judge_id,
             'source_code': review.get('sourceCode'),
-            'status': review.get('status')
+            'status': status
         }
     else: 
         return None

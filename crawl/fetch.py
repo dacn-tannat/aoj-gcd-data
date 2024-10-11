@@ -1,14 +1,14 @@
 import requests
-from constants import * 
+from .constants import * 
 
-def fetch_data_from_url(url: str):
+def fetch_data_from_url(url):
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
     else:
         raise ValueError(f'Failed to fetch from {url}\nStatus code: {response.status_code}')
 
-def fetch_problem_submission_records(problem_id: str, problem_pagination: str = ''):
+def fetch_problem_submission_records(problem_id, problem_pagination = ''):
     '''
     https://judgeapi.u-aizu.ac.jp/submission_records/problems/{problemID}?{page,size}
     '''
@@ -18,7 +18,7 @@ def fetch_problem_submission_records(problem_id: str, problem_pagination: str = 
         
     return fetch_data_from_url(url)
 
-def fetch_review_by_judge_id(judge_id: str):
+def fetch_review_by_judge_id(judge_id):
     '''
     https://judgeapi.u-aizu.ac.jp/reviews/{judgeID}
     '''

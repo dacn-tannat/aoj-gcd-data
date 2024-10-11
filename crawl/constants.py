@@ -1,6 +1,3 @@
-# https://judgeapi.u-aizu.ac.jp/submission_records/problems/{problemID}?{page,size}
-# https://judgeapi.u-aizu.ac.jp/reviews/{judgeID}
-
 BASE_URL = 'https://judgeapi.u-aizu.ac.jp'
 SUBMISSION_RECORDS = 'submission_records'
 PROBLEMS = 'problems'
