@@ -1,11 +1,34 @@
 import ply.lex as lex
 
 class CLexer:
+    """
+    A lexer for the C programming language.
+
+    This class uses the PLY (Python Lex-Yacc) library to tokenize C code.
+    It defines token types, their associated regular expressions, and methods
+    for handling different types of tokens.
+    """
+
     def __init__(self):
+        """
+        Initialize the CLexer.
+
+        This method creates a lexer object and initializes a set to store any
+        encountered error characters.
+        """
         self.lexer = lex.lex(module=self)
         self.error_characters = set()
         
     def tokenize(self, input_string):
+        """
+        Tokenize the input string.
+
+        Args:
+            input_string (str): The C code to tokenize.
+
+        Returns:
+            list: A list of tuples, where each tuple contains (token_type, token_value).
+        """
         self.lexer.input(input_string)
         tokens_list = []
         while True:
@@ -16,8 +39,15 @@ class CLexer:
         return [(token.type, token.value) for token in tokens_list]
 
     def get_error_characters(self):
+        """
+        Get the set of error characters encountered during tokenization.
+
+        Returns:
+            set: A set of characters that were not recognized by the lexer.
+        """
         return self.error_characters
 
+    # Token list
     tokens = [
         'IDENTIFIER', 'INTEGER_LITERAL', 'FLOAT_LITERAL', 'STRING_LITERAL', 'CHAR_LITERAL',
         # Arithmetic operators: [+ - * / %]
@@ -120,6 +150,7 @@ class CLexer:
     def t_COMMENT_SINGLE(self, t):
         r'//.*'
         pass
+
     def t_COMMENT_MULTI(self, t):
         r'/\*[\s\S]*?\*/'
         t.lexer.lineno += t.value.count('\n')
@@ -165,6 +196,16 @@ class CLexer:
         t.lexer.lineno += len(t.value)
 
     def t_error(self, t):
+        """
+        Error handling method for the lexer.
+
+        This method is called when the lexer encounters an illegal character.
+        It prints an error message, adds the character to the error_characters set,
+        and skips the character.
+
+        Args:
+            t: The token object representing the illegal character.
+        """
         print(f"Illegal character '{t.value[0]}'")
         self.error_characters.add(t.value[0])
         t.lexer.skip(1)

@@ -1,5 +1,18 @@
 class CTokenEncoder:
+    """
+    A class for encoding C language tokens into numerical representations.
+
+    This encoder maintains mappings for keywords, special characters, identifiers, and literals.
+    It assigns unique numerical codes to each token type for efficient processing and analysis.
+    """
+
     def __init__(self):
+        """
+        Initialize the CTokenEncoder with predefined mappings for keywords and special characters.
+
+        The encoder also initializes empty mappings for identifiers and literals,
+        which will be populated as new tokens are encountered during encoding.
+        """
         self.keyword_map = {
             'auto': 10, 'break': 11, 'case': 12, 'char': 13,
             'const': 14, 'continue': 15, 'default': 16, 'do': 17,
@@ -45,6 +58,18 @@ class CTokenEncoder:
         self.literal_count = 157
     
     def encode_tokens(self, token_list):
+        """
+        Encode a list of tokens into their numerical representations.
+
+        Args:
+            token_list (list): A list of tuples, where each tuple contains (token_type, token_value).
+
+        Returns:
+            list: A list of integers representing the encoded tokens.
+
+        This method assigns a unique numerical code to each token based on its type and value.
+        It handles keywords, identifiers, literals, and special characters differently.
+        """
         encoded_tokens = []
         for token_type, token_value in token_list:
             # Keyword 
@@ -76,7 +101,19 @@ class CTokenEncoder:
         return encoded_tokens
 
     def get_id_map(self):
+        """
+        Get the current identifier mapping.
+
+        Returns:
+            dict: A dictionary mapping identifier strings to their assigned numerical codes.
+        """
         return self.id_map
 
     def get_literal_map(self):
+        """
+        Get the current literal mapping.
+
+        Returns:
+            dict: A dictionary mapping literal values to their assigned numerical codes.
+        """
         return self.literal_map

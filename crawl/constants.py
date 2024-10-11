@@ -1,3 +1,10 @@
+"""
+Constants used throughout the crawling process.
+
+This module defines various constants used for API endpoints, problem identifiers,
+pagination parameters, and programming language specifications.
+"""
+
 BASE_URL = 'https://judgeapi.u-aizu.ac.jp'
 SUBMISSION_RECORDS = 'submission_records'
 PROBLEMS = 'problems'
