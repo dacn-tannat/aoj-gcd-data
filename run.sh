@@ -12,7 +12,7 @@ else
 fi
 
 # Run the main Python script
-python src/main.py
+python3 src/main.py
 
 # Deactivate the virtual environment
 deactivate

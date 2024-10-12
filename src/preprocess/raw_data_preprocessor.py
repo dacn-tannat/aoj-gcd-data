@@ -1,5 +1,5 @@
 from services.json_services import save_json_file
-from .filter_tokenize_encode import *
+from .tokenize_encode_filter import *
 
 def preprocess_raw_data(raw_data):
     """

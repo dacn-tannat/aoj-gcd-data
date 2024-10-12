@@ -5,12 +5,18 @@ This script imports necessary functions from the services module and processes
 the raw data stored in 'raw_data_c.json' when run as the main program.
 """
 
-from services import *
+from services import process_data
+from preprocess import filter_accepted_codes
 
 if __name__ == '__main__':
     '''
     Usage:
-        process_data() if data has not been crawled yet
-        process_data('raw_data_c.json') if the json file already exists
+    1. Crawl and pre-process data: 
+        process_data()
+    2. Just pre-process raw data (in case raw_data_c.json exits in data folder): 
+        process_data('raw_data_c.json')
+    3. Filter accepted codes:
+        accepted_codes = filter_accepted_codes()
     '''
-    data = process_data('raw_data_c.json')
+    # data = process_data('raw_data_c.json')
+    accepted_codes = filter_accepted_codes()
