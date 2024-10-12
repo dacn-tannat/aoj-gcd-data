@@ -4,6 +4,6 @@ def filter_accepted_codes(file_name):
     data = read_json_file(file_name=file_name)
     accepted_codes = [src for src in data if src['status'] == 4]
     
-    save_json_file(data=accepted_codes, file_name='accepted_codes_c.json')
+    save_json_file(data=accepted_codes, file_name=f'accepted_{file_name}')
     
     return accepted_codes

@@ -15,7 +15,9 @@ if __name__ == '__main__':
         process_data()
     2. Just pre-process existed raw data: 
         process_data('raw_data_c.json')
-    3. Filter accepted codes from raw data:
+        
+    3. Filter accepted codes:
         accepted_codes = filter_accepted_codes('raw_data_c.json')
+        accepted_codes = filter_accepted_codes('preprocessed_data_c.json')
     '''
-    accepted_codes = filter_accepted_codes('raw_data_c.json')
+    accepted_codes = filter_accepted_codes('preprocessed_data_c.json')
