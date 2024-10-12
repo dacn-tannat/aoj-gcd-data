@@ -13,10 +13,9 @@ if __name__ == '__main__':
     Usage:
     1. Crawl and pre-process data: 
         process_data()
-    2. Just pre-process raw data (in case raw_data_c.json exits in data folder): 
+    2. Just pre-process existed raw data: 
         process_data('raw_data_c.json')
-    3. Filter accepted codes:
-        accepted_codes = filter_accepted_codes()
+    3. Filter accepted codes from raw data:
+        accepted_codes = filter_accepted_codes('raw_data_c.json')
     '''
-    # data = process_data('raw_data_c.json')
-    accepted_codes = filter_accepted_codes()
+    accepted_codes = filter_accepted_codes('raw_data_c.json')
