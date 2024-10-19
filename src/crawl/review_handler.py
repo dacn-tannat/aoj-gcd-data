@@ -1,5 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from .fetch import *
+from utils.apis import *
 
 def get_review_data(judge_id, status):
     """

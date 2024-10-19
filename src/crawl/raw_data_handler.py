@@ -1,5 +1,5 @@
-from .constants import *
-from .fetch import fetch_problem_submission_records
+from utils.constants import *
+from utils.apis import fetch_problem_submission_records
 from .review_handler import handle_review_data_with_threads
 from services.json_services import save_json_file
 
