@@ -22,6 +22,7 @@ def submit_code_and_validate(source_code=None):
             "language": C_LANGUAGE,
             "sourceCode": source_code if source_code is not None else GCD_SOURCE_ACCEPTED_CODE
         }
+        print('payload: ', payload)
         submission_token = submit_code(session, payload)
         print('Submit code successfully\nsubmission_token: ', submission_token)
         
@@ -47,15 +48,20 @@ def submit_code_and_validate(source_code=None):
         print('Something went wrong, cannot find submission_token or last_100_submissions')
         
     # Get status and accuracy of submitted code
-    status, accuracy = submitted_code.get('status'), submitted_code.get('accuracy')
+    if submitted_code:
+        print('submitted_code: ', submitted_code)
+        status, accuracy = submitted_code.get('status'), submitted_code.get('accuracy')
     
     # Conditions check:
-    is_not_compile_error = status not in [0,4]
-    does_not_pass_all_test_cases = accuracy.split('/')[0] < accuracy.split('/')[1]
-    
-    if (is_not_compile_error and does_not_pass_all_test_cases):
-        print('Valid source code')
-        # Handle this case later, maybe write into a json file
-    else: 
-        print('Invalid source code')
+        is_not_compile_error = status not in [0,4]
+        does_not_pass_all_test_cases = accuracy.split('/')[0] < accuracy.split('/')[1]
+        
+        if (is_not_compile_error and does_not_pass_all_test_cases):
+            print('Valid source code')
+            # Handle this case later, maybe write into a json file
+        else: 
+            print('Invalid source code')
+            
+    else:
+        print('Something went wrong, cannot find submitted_code')
     

@@ -20,5 +20,6 @@ if __name__ == '__main__':
         accepted_codes = filter_accepted_codes('raw_data_c.json')
         accepted_codes = filter_accepted_codes('preprocessed_data_c.json')
     '''
-    submit_code_and_validate()
+    source_code = ""
+    submit_code_and_validate(source_code)
     

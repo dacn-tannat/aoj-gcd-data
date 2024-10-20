@@ -24,4 +24,4 @@ GCD_PROBLEM_ID = 'ALDS1_1_B'
 GCD_PAGINATION = 'page=0&size=41685'
 
 # Default GCD sources code
-GCD_SOURCE_ACCEPTED_CODE = "int main(){int x, y;scanf(\"%d %d\", &x, &y);int gcd;while (x > y){gcd = x % y;x = y;y = gcd;}printf(\"%d\n\", y);}"
+GCD_SOURCE_ACCEPTED_CODE = "int main()\n{\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n\n    int gcd;\n    while (x != 0)\n    {\n        gcd = x / y;\n        x = gcd;\n        y = x;\n        //printf(\"x:%d,y:%d\", x, y);\n    }\n    printf(\"%d\n\", y);\n}"
