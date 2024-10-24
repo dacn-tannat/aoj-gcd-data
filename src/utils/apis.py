@@ -18,7 +18,8 @@ def get_data_from_url(url):
     if response.status_code == 200:
         return response.json()
     else:
-        raise ValueError(f'Failed to fetch from {url}\nResponse: {response.json()}')
+        print(f'Failed to fetch from {url}\nResponse: {response.json()}')
+        return None
 
 def post_data_to_url(session, url, payload, headers=None):
     """
@@ -36,6 +37,9 @@ def post_data_to_url(session, url, payload, headers=None):
     Raises:
         ValueError: If the request fails or returns a non-200 status code.
     """
+    if session is None:
+        session = requests.Session()
+    
     if headers is None: 
         headers = {
             "Content-Type": "application/json"
@@ -46,7 +50,8 @@ def post_data_to_url(session, url, payload, headers=None):
     if response.status_code == 200:
         return response.json()
     else:
-        raise ValueError(f'Failed to post to {url}\nResponse: {response.json()}')
+        print(f'Failed to post to {url}\nResponse: {response.json()}')
+        return None
 
 def fetch_problem_submission_records(problem_id, problem_pagination = ''):
     """
