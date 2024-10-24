@@ -6,7 +6,7 @@ class CTokenEncoder:
     It assigns unique numerical codes to each token type for efficient processing and analysis.
     """
 
-    def __init__(self):
+    def __init__(self, literal_map=None):
         """
         Initialize the CTokenEncoder with predefined mappings for keywords and special characters.
 
@@ -54,8 +54,13 @@ class CTokenEncoder:
         self.id_map = {}
         self.id_count = 127
         
-        self.literal_map = {}
-        self.literal_count = 157
+        if literal_map is None:
+            self.literal_map = {}
+            self.literal_count = 157
+        
+        else:
+            self.literal_map = literal_map
+            self.literal_count = int(list(self.literal_map.keys())[-1])
     
     def encode_tokens(self, token_list):
         """
@@ -85,12 +90,23 @@ class CTokenEncoder:
                     encoded_tokens.append(self.id_map[token_value])
             # Literal
             elif token_type in ['STRING_LITERAL', 'CHAR_LITERAL', 'INTEGER_LITERAL', 'FLOAT_LITERAL']:
-                if token_value not in self.literal_map:
+                # if token_value not in self.literal_map:
+                #     encoded_tokens.append(self.literal_count)
+                #     self.literal_map[token_value] = self.literal_count
+                #     self.literal_count += 1
+                # else:
+                #     encoded_tokens.append(self.literal_map[token_value])
+                found = False
+                for key, value in self.literal_map.items():
+                    if token_value == value:
+                        encoded_tokens.append(int(key))
+                        found = True
+                        break
+                if not found:
                     encoded_tokens.append(self.literal_count)
-                    self.literal_map[token_value] = self.literal_count
+                    self.literal_map[self.literal_count] = token_value
                     self.literal_count += 1
-                else:
-                    encoded_tokens.append(self.literal_map[token_value])
+                
             # Special Character
             elif token_type in self.special_character_map:
                 encoded_tokens.append(self.special_character_map[token_type])
@@ -100,15 +116,10 @@ class CTokenEncoder:
             
         return encoded_tokens
 
-    def get_id_map(self):
-        """
-        Get the current identifier mapping.
-
-        Returns:
-            dict: A dictionary mapping identifier strings to their assigned numerical codes.
-        """
-        return self.id_map
-
+    def reset_id(self):
+        self.id_count = 127
+        self.id_map = {}
+    
     def get_literal_map(self):
         """
         Get the current literal mapping.

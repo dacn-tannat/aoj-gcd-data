@@ -19,7 +19,8 @@ def preprocess_raw_data(raw_data):
     Note:
         The preprocessed data is saved to disk, allowing for easy retrieval in future processing steps.
     """
-    preprocessed_data = tokenize_and_encode(raw_data)
+    literal_map, preprocessed_data = tokenize_and_encode(raw_data)
     save_json_file(preprocessed_data, 'preprocessed_data_c2.json')
+    save_json_file(literal_map, 'literal_map_data.json')
     
     return preprocessed_data

@@ -54,6 +54,8 @@ def tokenize_and_encode(src_list):
     for src in src_list:
         source_code = src['source_code']
         
+        encoder.reset_id()
+        
         # Tokenize source code into raw tokens
         raw_tokens = lexer.tokenize(source_code)
         raw_tokens_value = [token[1] for token in raw_tokens]
@@ -63,5 +65,7 @@ def tokenize_and_encode(src_list):
         encoded_tokens = encoder.encode_tokens(raw_tokens)
         src['encoded_tokens'] = encoded_tokens
     
+    literal_map = encoder.get_literal_map()
     filter_src_list = filter(src_list)
-    return filter_src_list
+    
+    return literal_map, filter_src_list
