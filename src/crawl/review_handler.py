@@ -1,5 +1,11 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from utils.apis import *
+import re
+
+def add_escape_chars(text):
+    # Thêm một dấu `\` trước các ký tự escape chỉ khi chúng nằm trong chuỗi dấu nháy kép "..."
+    # Điều kiện `(?<=\\)` đảm bảo chỉ thêm \ khi escape character đã có một dấu \ trước đó.
+    return re.sub(r'(?<=\\)(n|t|r|")', r'\1', text)
 
 def get_review_data(judge_id, status):
     """
@@ -14,17 +20,23 @@ def get_review_data(judge_id, status):
         None: If the review is private or doesn't contain source code.
     """
     review = fetch_review_by_judge_id(judge_id)
-    
-    if review and review.get('policy') != 'private' and review.get('sourceCode'):
+
+    if (
+        review and
+        review.get('policy') != 'private' and 
+        review.get('sourceCode') and
+        review.get('userId') != 'duyanhlucas302'
+    ):
+        source_code = review.get('sourceCode', '')
         return {
             'judge_id': judge_id,
-            'source_code': review.get('sourceCode'),
+            'source_code': source_code,
             'status': status
         }
     else: 
         return None
     
-def handle_review_data_with_threads(judge_ids: list, num_threads=100):
+def handle_review_data_with_threads(judge_ids, num_threads=100):
     """
     Handle review data fetching and processing using multi-threading.
 
@@ -39,7 +51,7 @@ def handle_review_data_with_threads(judge_ids: list, num_threads=100):
         This function uses ThreadPoolExecutor to fetch and process review data in parallel,
         which can significantly speed up the data collection process for large numbers of reviews.
     """
-    print(f'In progress of handling review data with {num_threads} threads')
+    print(f'In progress of handling review data with {num_threads} threads...')
     
     src_list = []
     with ThreadPoolExecutor(max_workers=num_threads) as executor:

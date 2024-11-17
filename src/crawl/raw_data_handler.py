@@ -18,19 +18,21 @@ def get_raw_data():
         list: A list of processed review data for C language submissions.
 
     Note:
-        The raw data is saved to 'raw_data_c2.json' in the data directory.
+        The raw data is saved to 'raw_data.json' in the data directory.
     """
+    print(f'Attempt to fetching submissions of problem {GCD_PROBLEM_ID}...')
     submission_records = fetch_problem_submission_records(GCD_PROBLEM_ID, GCD_PAGINATION)
+    print(f'Fetching submissions: Done!')
     judge_ids = [
         { 
             'judgeId': submission.get('judgeId'), 
             'status': submission.get('status')
         }
         for submission in submission_records 
-        if submission.get('language') == C_LANGUAGE
+        if submission.get('language') == 'C' and submission.get('status') == 4
     ]
     raw_data = handle_review_data_with_threads(judge_ids)
     
-    save_json_file(data=raw_data, file_name='raw_data_c2.json')
+    save_json_file(data=raw_data, file_name='raw_data.json')
     
     return raw_data

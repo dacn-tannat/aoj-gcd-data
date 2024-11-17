@@ -1,0 +1,131 @@
+judge_id 2238872
+raw_tokens:  ['#', 'include', '<', 'stdio', '.', 'h', '>', '#', 'include', '<', 'ctype', '.', 'h', '>', '#', 'include', '<', 'string', '.', 'h', '>', '#', 'include', '<', 'math', '.', 'h', '>', 'int', 'main', '(', 'void', ')', '{', 'int', 'a', ',', 'b', ',', 'n', ',', 'i', ',', 'j', ',', 'k', ',', 'x', ',', 'y', ',', 'r', ';', 'scanf', '(', '"%%d %%d"', ',', '&', 'x', ',', '&', 'y', ')', ';', 'if', '(', 'x', '<', 'y', ')', '{', 'n', '=', 'x', ';', 'x', '=', 'y', ';', 'y', '=', 'n', ';', '}', 'r', '=', 'x', '*', 'y', ';', 'while', '(', 'r', '!=', 0, ')', '{', 'x', '=', 'y', ';', 'y', '=', 'r', ';', 'r', '=', 'x', '%', 'y', ';', '}', 'printf', '(', '"%%d\\n"', ',', 'y', ')', ';', 'return', 0, ';', '}']
+encoded_id:  [52, 127, 67, 128, 49, 129, 68, 52, 127, 67, 130, 49, 129, 68, 52, 127, 67, 131, 49, 129, 68, 52, 127, 67, 132, 49, 129, 68, 26, 133, 96, 39, 97, 98, 26, 134, 92, 135, 92, 136, 92, 137, 92, 138, 92, 139, 92, 140, 92, 141, 92, 142, 91, 143, 96, 318, 92, 81, 140, 92, 81, 141, 97, 91, 25, 96, 140, 67, 141, 97, 98, 136, 54, 140, 91, 140, 54, 141, 91, 141, 54, 136, 91, 99, 142, 54, 140, 57, 141, 91, 41, 96, 142, 66, 161, 97, 98, 140, 54, 141, 91, 141, 54, 142, 91, 142, 54, 140, 59, 141, 91, 99, 144, 96, 319, 92, 141, 97, 91, 29, 161, 91, 99]
+
+ #include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+#include <math.h>
+int main(void){
+	int a,b,n,i,j,k,x,y,r;
+	scanf("%%d %%d",&x,&y);
+	if(x<y){
+		n=x;
+		x=y;
+		y=n;
+	}
+	r=x*y;
+	while(r!=0){
+		x=y;
+		y=r;
+		r=x%y;
+	}
+	printf("%%d\n",y);
+	return 0;
+}
+
+======================================
+
+TRUE POSITIVE (src có lỗi được dự đoán là có lỗi)
+
+======================================
+
+Incorrect answers: 14/123
+Error 0:
+	Context: h>#
+	Token: #
+	Real ID: 52
+	Prediction: [(26, 0.8746519088745117)]
+	Location: 8
+Error 1:
+	Context: h>#
+	Token: #
+	Real ID: 52
+	Prediction: [(26, 0.8255988955497742)]
+	Location: 15
+Error 2:
+	Context: r;scanf
+	Token: scanf
+	Real ID: 143
+	Prediction: [(26, 0.14471909403800964), (141, 0.22456929087638855), (140, 0.5807151794433594)]
+	Location: 54
+Error 3: REAL BUG
+	Context: scanf("%%d %%d"
+	Token: "%%d %%d"
+	Real ID: 318
+	Prediction: [(162, 0.2873959243297577), (157, 0.698855459690094)] -> Suggest không đúng (162)
+	Location: 56
+Error 4:
+	Context: (x<
+	Token: <
+	Real ID: 67
+	Prediction: [(96, 0.9043260216712952)]
+	Location: 68
+Error 5:
+	Context: ){n
+	Token: n
+	Real ID: 136
+	Prediction: [(141, 0.1727646440267563), (142, 0.7675089240074158)]
+	Location: 72
+Error 6:
+	Context: ;}r
+	Token: r
+	Real ID: 142
+	Prediction: [(19, 0.35334911942481995), (41, 0.4363405108451843)]
+	Location: 85
+Error 7:
+	Context: r=x
+	Token: x
+	Real ID: 140
+	Prediction: [(135, 0.8632084727287292)]
+	Location: 87
+Error 8: REAL BUG
+	Context: =x*
+	Token: *
+	Real ID: 57
+	Prediction: [(96, 0.9998328685760498)] -> Suggest không đúng (59)
+	Location: 88
+Error 9:
+	Context: =x%
+	Token: %
+	Real ID: 59
+	Prediction: [(91, 0.9940844178199768)]
+	Location: 109
+Error 10:
+	Context: ;}printf
+	Token: printf
+	Real ID: 144
+	Prediction: [(29, 0.2847960591316223), (145, 0.47912704944610596)]
+	Location: 113
+Error 11: REAL BUG
+	Context: printf("%%d\n"
+	Token: "%%d\n"
+	Real ID: 319
+	Prediction: [(158, 0.994468092918396)] -> Suggest đúng (158)
+	Location: 115
+Error 12:
+	Context: "%%d\n",y
+	Token: y
+	Real ID: 141
+	Prediction: [(136, 0.10311082750558853), (142, 0.17961233854293823), (144, 0.2760433256626129), (140, 0.30421608686447144)]
+	Location: 117
+Error 13:
+	Context: );return
+	Token: return
+	Real ID: 29
+	Prediction: [(99, 0.9502575993537903)]
+	Location: 120
+----------------------------------------
+REAL BUG:
+Error 0:
+	Location: 56
+	Must be: 162
+	Error token: "%%d %%d"
+Error 1:
+	Location: 88
+	Must be: 59
+	Error token: *
+Error 2:
+	Location: 115
+	Must be: 158
+	Error token: "%%d\n"

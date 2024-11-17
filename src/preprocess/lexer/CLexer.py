@@ -206,6 +206,6 @@ class CLexer:
         Args:
             t: The token object representing the illegal character.
         """
-        print(f"Illegal character '{t.value[0]}'")
+        # print(f"Illegal character '{t.value[0]}'")
         self.error_characters.add(t.value[0])
         t.lexer.skip(1)

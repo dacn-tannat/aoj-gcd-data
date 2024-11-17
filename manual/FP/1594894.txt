@@ -1,0 +1,57 @@
+judge_id 1594894
+raw_tokens:  ['#', 'include', '<', 'stdio', '.', 'h', '>', 'int', 'main', '(', ')', '{', 'long', 'a', ',', 'b', ',', 'temp', ';', 'scanf', '(', '"%ld %ld"', ',', '&', 'a', ',', '&', 'b', ')', ';', 'if', '(', 'b', '>', 'a', ')', '{', 'temp', '=', 'a', ';', 'a', '=', 'b', ';', 'b', '=', 'temp', ';', '}', 'while', '(', 'b', '!=', 0, ')', '{', 'temp', '=', 'b', ';', 'b', '=', 'a', '%', 'b', ';', 'a', '=', 'temp', ';', '}', 'printf', '(', '"%ld\\n"', ',', 'a', ')', ';', 'return', 0, ';', '}']
+encoded_id:  [52, 127, 67, 128, 49, 129, 68, 26, 130, 96, 97, 98, 27, 131, 92, 132, 92, 133, 91, 134, 96, 197, 92, 81, 131, 92, 81, 132, 97, 91, 25, 96, 132, 68, 131, 97, 98, 133, 54, 131, 91, 131, 54, 132, 91, 132, 54, 133, 91, 99, 41, 96, 132, 66, 161, 97, 98, 133, 54, 132, 91, 132, 54, 131, 59, 132, 91, 131, 54, 133, 91, 99, 135, 96, 187, 92, 131, 97, 91, 29, 161, 91, 99]
+
+ #include <stdio.h>
+
+int main() {
+  long a,b,temp;
+  scanf("%ld %ld", &a, &b);
+
+  if(b>a) {
+    temp = a;
+    a = b;
+    b = temp;
+  }
+  while(b != 0) {
+    temp = b;
+    b = a%b;
+    a = temp;
+  }
+  printf("%ld\n", a);
+
+  return 0;
+}
+
+======================================
+
+FALSE POSITIVE (src không có lỗi được dự đoán là có lỗi)
+
+======================================
+
+Incorrect answers: 4/83
+Error 0:
+	Context: ){long
+	Token: long
+	Real ID: 27
+	Prediction: [(26, 0.9859333634376526)]
+	Location: 12
+Error 1:
+	Context: scanf("%ld %ld"
+	Token: "%ld %ld"
+	Real ID: 197
+	Prediction: [(159, 0.6226919293403625)]
+	Location: 21
+Error 2:
+	Context: temp=b
+	Token: b
+	Real ID: 132
+	Prediction: [(131, 0.9267618656158447)]
+	Location: 59
+Error 3:
+	Context: printf("%ld\n"
+	Token: "%ld\n"
+	Real ID: 187
+	Prediction: [(158, 0.9850908517837524)]
+	Location: 74
+----------------------------------------

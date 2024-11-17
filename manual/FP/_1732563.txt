@@ -1,0 +1,103 @@
+judge_id 1732563
+raw_tokens:  ['#', 'include', '<', 'stdio', '.', 'h', '>', 'int', 'main', '(', ')', '{', 'int', 'x', ',', 'y', ',', 'r', '=', 0, ',', 'gcd', ';', 'scanf', '(', '"%d%d"', ',', '&', 'x', ',', '&', 'y', ')', ';', 'if', '(', 'x', '==', 'y', ')', 'gcd', '=', 'x', ';', 'if', '(', 'x', '>', 'y', ')', '{', 'while', '(', '(', 'r', '=', 'x', '%', 'y', ')', '!=', 0, ')', '{', 'x', '=', 'y', ';', 'y', '=', 'r', ';', '}', 'gcd', '=', 'y', ';', '}', 'if', '(', 'y', '>', 'x', ')', '{', 'while', '(', '(', 'r', '=', 'y', '%', 'x', ')', '!=', 0, ')', '{', 'y', '=', 'x', ';', 'x', '=', 'r', ';', '}', 'gcd', '=', 'x', ';', '}', 'printf', '(', '"%d\\n"', ',', 'gcd', ')', ';', 'return', 0, ';', '}']
+encoded_id:  [52, 127, 67, 128, 49, 129, 68, 26, 130, 96, 97, 98, 26, 131, 92, 132, 92, 133, 54, 161, 92, 134, 91, 135, 96, 157, 92, 81, 131, 92, 81, 132, 97, 91, 25, 96, 131, 65, 132, 97, 134, 54, 131, 91, 25, 96, 131, 68, 132, 97, 98, 41, 96, 96, 133, 54, 131, 59, 132, 97, 66, 161, 97, 98, 131, 54, 132, 91, 132, 54, 133, 91, 99, 134, 54, 132, 91, 99, 25, 96, 132, 68, 131, 97, 98, 41, 96, 96, 133, 54, 132, 59, 131, 97, 66, 161, 97, 98, 132, 54, 131, 91, 131, 54, 133, 91, 99, 134, 54, 131, 91, 99, 136, 96, 158, 92, 134, 97, 91, 29, 161, 91, 99]
+
+ #include <stdio.h>
+int main()
+{
+
+  int x, y, r = 0, gcd;
+
+  scanf("%d%d",&x,&y);
+  if(x == y) gcd = x;
+  if(x > y){
+    while((r = x % y) != 0){
+      x = y;
+      y = r;
+    }
+    gcd = y;
+  }
+  if(y > x){
+    while((r = y % x) != 0){
+      y = x;
+      x = r;
+    }
+    gcd = x;
+  }
+  printf("%d\n",gcd);
+  return 0;
+}
+
+======================================
+
+FALSE POSITIVE (src không có lỗi được dự đoán là có lỗi)
+
+======================================
+
+Incorrect answers: 11/123
+Error 0:
+	Context: ,r=
+	Token: =
+	Real ID: 54
+	Prediction: [(91, 0.28516829013824463), (92, 0.6822914481163025)]
+	Location: 19
+Error 1:
+	Context: (x==
+	Token: ==
+	Real ID: 65
+	Prediction: [(67, 0.940040111541748)]
+	Location: 38
+Error 2:
+	Context: y)gcd
+	Token: gcd
+	Real ID: 134
+	Prediction: [(98, 0.9810953736305237)]
+	Location: 41
+Error 3:
+	Context: x;if
+	Token: if
+	Real ID: 25
+	Prediction: [(19, 0.9615070819854736)]
+	Location: 45
+Error 4:
+	Context: (x>
+	Token: >
+	Real ID: 68
+	Prediction: [(70, 0.10261012613773346), (67, 0.7278666496276855)]
+	Location: 48
+Error 5:
+	Context: while((
+	Token: (
+	Real ID: 96
+	Prediction: [(132, 0.11098617315292358), (134, 0.1905614286661148), (163, 0.6004900336265564)]
+	Location: 54
+Error 6:
+	Context: ((r
+	Token: r
+	Real ID: 133
+	Prediction: [(134, 0.8478748798370361)]
+	Location: 55
+Error 7:
+	Context: ;}if
+	Token: if
+	Real ID: 25
+	Prediction: [(136, 0.7320837378501892)]
+	Location: 79
+Error 8:
+	Context: while((
+	Token: (
+	Real ID: 96
+	Prediction: [(163, 0.4544559717178345), (134, 0.4708057641983032)]
+	Location: 88
+Error 9:
+	Context: ((r
+	Token: r
+	Real ID: 133
+	Prediction: [(134, 0.8697732090950012)]
+	Location: 89
+Error 10:
+	Context: ;}gcd
+	Token: gcd
+	Real ID: 134
+	Prediction: [(99, 0.13053816556930542), (136, 0.80729740858078)]
+	Location: 108

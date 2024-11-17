@@ -1,0 +1,110 @@
+judge_id 1963932
+raw_tokens:  ['#', 'include', '<', 'stdio', '.', 'h', '>', 'long', 'get_gcd', '(', 'long', ',', 'long', ')', ';', 'int', 'main', '(', ')', '{', 'long', 'x', ',', 'y', ';', 'scanf', '(', '"%ld %ld"', ',', '&', 'x', ',', '&', 'y', ')', ';', 'printf', '(', '"%ld\\n"', ',', 'get_gcd', '(', 'x', ',', 'x', ')', ')', ';', 'return', 0, ';', '}', 'long', 'get_gcd', '(', 'long', 'x', ',', 'long', 'y', ')', '{', 'long', 'tmp', ';', 'while', '(', 'y', '>', 0, ')', '{', 'tmp', '=', 'x', ';', 'x', '=', 'y', ';', 'y', '=', 'tmp', '%', 'y', ';', '}', 'return', 'x', ';', '}']
+encoded_id:  [52, 127, 67, 128, 49, 129, 68, 27, 130, 96, 27, 92, 27, 97, 91, 26, 131, 96, 97, 98, 27, 132, 92, 133, 91, 134, 96, 197, 92, 81, 132, 92, 81, 133, 97, 91, 135, 96, 187, 92, 130, 96, 132, 92, 132, 97, 97, 91, 29, 161, 91, 99, 27, 130, 96, 27, 132, 92, 27, 133, 97, 98, 27, 136, 91, 41, 96, 133, 68, 161, 97, 98, 136, 54, 132, 91, 132, 54, 133, 91, 133, 54, 136, 59, 133, 91, 99, 29, 132, 91, 99]
+
+ // 1_1_B
+#include<stdio.h>
+
+long get_gcd(long, long);
+
+int main(){
+    long x, y;
+    scanf("%ld %ld", &x, &y);
+    printf("%ld\n", get_gcd(x, x));
+    return 0;
+}
+
+long get_gcd(long x, long y){
+    long tmp;
+    while(y > 0){
+        tmp = x;
+        x = y;
+        y = tmp % y;
+    }
+    return x;
+}
+======================================
+
+TRUE POSITIVE (src có lỗi được dự đoán là có lỗi)
+
+======================================
+
+Incorrect answers: 12/91
+Error 0:
+	Context: h>long
+	Token: long
+	Real ID: 27
+	Prediction: [(26, 0.8792325854301453)]
+	Location: 8
+Error 1:
+	Context: >longget_gcd
+	Token: get_gcd
+	Real ID: 130
+	Prediction: [(27, 0.845959484577179)]
+	Location: 9
+Error 2:
+	Context: (long,
+	Token: ,
+	Real ID: 92
+	Prediction: [(26, 0.1233765035867691), (131, 0.3022467792034149), (27, 0.4860031008720398)]
+	Location: 12
+Error 3:
+	Context: {longx
+	Token: x
+	Real ID: 132
+	Prediction: [(27, 0.9589592218399048)]
+	Location: 22
+Error 4:
+	Context: scanf("%ld %ld"
+	Token: "%ld %ld"
+	Real ID: 197
+	Prediction: [(159, 0.9295011758804321)]
+	Location: 28
+Error 5:
+	Context: printf("%ld\n"
+	Token: "%ld\n"
+	Real ID: 187
+	Prediction: [(158, 0.30387580394744873), (160, 0.6616278886795044)]
+	Location: 39
+Error 6:
+	Context: x,x
+	Token: x
+	Real ID: 132
+	Prediction: [(133, 0.9998098015785217)]
+	Location: 45
+Error 7:
+	Context: ;}long
+	Token: long
+	Real ID: 27
+	Prediction: [(26, 0.9815424084663391)]
+	Location: 53
+Error 8:
+	Context: (longx
+	Token: x
+	Real ID: 132
+	Prediction: [(26, 0.3567289710044861), (27, 0.5882948637008667)]
+	Location: 57
+Error 9:
+	Context: {longtmp
+	Token: tmp
+	Real ID: 136
+	Prediction: [(27, 0.9202304482460022)]
+	Location: 64
+Error 10:
+	Context: longtmp;
+	Token: ;
+	Real ID: 91
+	Prediction: [(54, 0.23515181243419647), (92, 0.6453967690467834)]
+	Location: 65
+Error 11:
+	Context: =x;
+	Token: ;
+	Real ID: 91
+	Prediction: [(59, 0.9996604919433594)]
+	Location: 76
+----------------------------------------
+REAL BUG:
+Error 0:
+	Location: 45
+	Must be: 133
+	Error token: x

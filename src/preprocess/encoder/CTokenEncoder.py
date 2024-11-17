@@ -51,6 +51,22 @@ class CTokenEncoder:
             'LPAREN': 96, 'RPAREN': 97, 'LBRACE': 98, 'RBRACE': 99
         }
         
+        self.punctuation_and_symbol_map = {
+            '?': 45, ':': 46, # Condition
+            '->': 48, '.': 49, # Member access
+            '\\': 51, '#': 52, # Miscellaneous
+            '=': 54, # EQUAL
+            '+': 55, '-': 56, '*': 57, '/': 58, '%': 59, # Arithmetic
+            '+=': 60, '-=': 61, '*=': 62, '/=': 63, '%=': 64, # Arithmetic assignment
+            '==': 65, '!=': 66, '<': 67, '>': 68, '<=': 69, '>=': 70, # Relational
+            '++': 71, '--': 72, # Increment & Decrement
+            '!': 75, '&&': 76, '||': 77, # Logical
+            '~': 80, '&': 81, '|': 82, '^': 83, '<<': 84, '>>': 85, # Bitwise
+            '&=': 86, '|=': 87, '^=': 88, '<<=': 89, '>>=': 90, # Bitwise assignment
+            ';': 91, ',': 92, '[': 93, ']': 94, # Separator
+            '(': 96, ')': 97, '{': 98, '}': 99 # Parentheses and braces
+        }
+        
         self.id_map = {}
         self.id_count = 127
         
@@ -128,3 +144,15 @@ class CTokenEncoder:
             dict: A dictionary mapping literal values to their assigned numerical codes.
         """
         return self.literal_map
+
+    def get_vocab_map(self):
+        reversed_keyword_map = {v: k for k, v in self.keyword_map.items()}
+        reversed_punctuation_and_symbol_map = {v: k for k, v in self.punctuation_and_symbol_map.items()}
+        vocab_map = {**reversed_keyword_map, **reversed_punctuation_and_symbol_map, **self.literal_map}
+        for key, value in vocab_map.items():
+            print(f"{key}: {value}")
+        # sorted_vocabulary = dict(sorted(vocab_map.items()))
+        return vocab_map
+
+        
+

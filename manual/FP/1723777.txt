@@ -1,0 +1,71 @@
+judge_id 1723777
+raw_tokens:  ['#', 'include', '<', 'stdio', '.', 'h', '>', 'int', 'main', '(', ')', '{', 'int', 'a', ',', 'b', ',', 'tmp', ',', 'c', ';', 'int', 'i', '=', 1, ';', 'scanf', '(', '"%d %d"', ',', '&', 'a', ',', '&', 'b', ')', ';', 'if', '(', 'a', '>', 'b', ')', '{', 'tmp', '=', 'a', ';', 'a', '=', 'b', ';', 'b', '=', 'tmp', ';', '}', 'while', '(', 'b', '>', 0, ')', '{', 'tmp', '=', 'a', '%', 'b', ';', 'a', '=', 'b', ';', 'b', '=', 'tmp', ';', 'if', '(', 'tmp', '==', 0, ')', 'break', ';', '}', 'printf', '(', '"%d\\n"', ',', 'a', ')', ';', 'return', 0, ';', '}']
+encoded_id:  [52, 127, 67, 128, 49, 129, 68, 26, 130, 96, 97, 98, 26, 131, 92, 132, 92, 133, 92, 134, 91, 26, 135, 54, 163, 91, 136, 96, 162, 92, 81, 131, 92, 81, 132, 97, 91, 25, 96, 131, 68, 132, 97, 98, 133, 54, 131, 91, 131, 54, 132, 91, 132, 54, 133, 91, 99, 41, 96, 132, 68, 161, 97, 98, 133, 54, 131, 59, 132, 91, 131, 54, 132, 91, 132, 54, 133, 91, 25, 96, 133, 65, 161, 97, 11, 91, 99, 137, 96, 158, 92, 131, 97, 91, 29, 161, 91, 99]
+
+ #include <stdio.h>
+int main(){
+  int a, b,tmp,c;
+  int i=1;
+
+  scanf("%d %d",&a,&b);
+  if( a>b ){
+    tmp = a;
+    a = b;
+    b = tmp;
+  }
+
+  while(b>0){
+    tmp = a%b;
+    a = b;
+    b = tmp;
+    if (tmp==0)break;
+  }
+
+  printf("%d\n",a);
+  return 0;
+}
+
+======================================
+
+FALSE POSITIVE (src không có lỗi được dự đoán là có lỗi)
+
+======================================
+
+Incorrect answers: 6/98
+Error 0:
+	Context: c;int
+	Token: int
+	Real ID: 26
+	Prediction: [(135, 0.9443373084068298)]
+	Location: 22
+Error 1:
+	Context: while(b
+	Token: b
+	Real ID: 132
+	Prediction: [(163, 0.7287760972976685)]
+	Location: 60
+Error 2:
+	Context: ){tmp
+	Token: tmp
+	Real ID: 133
+	Prediction: [(134, 0.9705864787101746)]
+	Location: 65
+Error 3:
+	Context: tmp;if
+	Token: if
+	Real ID: 25
+	Prediction: [(99, 0.9997162222862244)]
+	Location: 79
+Error 4:
+	Context: if(tmp
+	Token: tmp
+	Real ID: 133
+	Prediction: [(132, 0.33188244700431824), (131, 0.5600247979164124)]
+	Location: 81
+Error 5:
+	Context: ;}printf
+	Token: printf
+	Real ID: 137
+	Prediction: [(136, 0.38875433802604675), (135, 0.5619109869003296)]
+	Location: 88
+----------------------------------------

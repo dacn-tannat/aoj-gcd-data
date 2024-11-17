@@ -16,7 +16,9 @@ This project is designed to crawl, pre-process, and analyze source code submissi
    cd tannat-data
    ```
 
-3. Run the main processing script using the run.sh script:
+3. Set up the `.env` file in the root directory according to the `.env.template` file.
+
+4. Run the main processing script using the run.sh script:
 
    ```
    ./run.sh
@@ -72,7 +74,7 @@ See `requirements.txt` for a list of dependencies.
 
 ## Contributors
 
-tannat team:
+tannat:
 
 - Lê Duy Anh
 - Võ Nguyễn Đoan Thảo

@@ -87,6 +87,7 @@ def fetch_review_by_judge_id(judge_id):
         API endpoint: https://judgeapi.u-aizu.ac.jp/reviews/{judgeID}
     """
     url = f'{BASE_URL}/{REVIEWS}/{judge_id}'
+    
     return get_data_from_url(url)
 
 def get_self(session):
@@ -137,7 +138,7 @@ def login_to_aoj(session):
     
     return post_data_to_url(session, url, payload, headers)
 
-def submit_code(session, payload):
+def submit_source_code(session, payload):
     """
     Submit source code to Aizu Online Judge.
 

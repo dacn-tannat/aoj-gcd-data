@@ -1,3 +1,3 @@
-from .code_submission import *
-from .errors_location_labeling import *
-from .errors_seeder import *
+from .submission_validator import *
+from .bug_position_labeler import *
+from .buggy_data_generator import *

@@ -1,0 +1,60 @@
+judge_id 2045719
+raw_tokens:  ['#', 'include', '<', 'stdio', '.', 'h', '>', 'int', 'main', '(', ')', '{', 'int', 'x', ',', 'y', ',', 'max', ',', 'min', ',', 'newmax', ';', 'scanf', '(', '"%d %d"', ',', '&', 'x', ',', '&', 'y', ')', ';', 'if', '(', 'x', '>', 'y', ')', '{', 'max', '=', 'x', ';', 'min', '=', 'y', ';', '}', 'else', '{', 'max', '=', 'y', ';', 'min', '=', 'x', ';', '}', 'while', '(', 'max', '!=', 'min', '&&', 'min', '!=', 0, ')', '{', 'newmax', '=', 'min', ';', 'min', '=', 'max', '%', 'min', ';', 'max', '=', 'newmax', ';', '}', 'printf', '(', '"%d\\n"', ',', 'max', ')', ';', 'return', 0, ';', '}']
+encoded_id:  [52, 127, 67, 128, 49, 129, 68, 26, 130, 96, 97, 98, 26, 131, 92, 132, 92, 133, 92, 134, 92, 135, 91, 136, 96, 162, 92, 81, 131, 92, 81, 132, 97, 91, 25, 96, 131, 68, 132, 97, 98, 133, 54, 131, 91, 134, 54, 132, 91, 99, 19, 98, 133, 54, 132, 91, 134, 54, 131, 91, 99, 41, 96, 133, 66, 134, 76, 134, 66, 161, 97, 98, 135, 54, 134, 91, 134, 54, 133, 59, 134, 91, 133, 54, 135, 91, 99, 137, 96, 158, 92, 133, 97, 91, 29, 161, 91, 99]
+
+ #include<stdio.h>
+ 
+int main(){
+  int x ,y ,max ,min ,newmax;
+  scanf("%d %d" ,&x ,&y);
+
+  if(x > y){
+   max = x;
+   min = y;
+  }
+  else{
+   max = y;
+   min = x;
+  }
+   while(max != min && min !=0){
+    newmax = min;
+    min = max % min;
+    max = newmax;
+  }
+   	printf("%d\n" ,max);
+
+ return 0;
+}
+
+======================================
+
+FALSE POSITIVE (src không có lỗi được dự đoán là có lỗi)
+
+======================================
+
+Incorrect answers: 4/98
+Error 0:
+	Context: while(max
+	Token: max
+	Real ID: 133
+	Prediction: [(134, 0.4021986722946167), (163, 0.46003109216690063)]
+	Location: 64
+Error 1:
+	Context: (max!=
+	Token: !=
+	Real ID: 66
+	Prediction: [(68, 0.2143811732530594), (59, 0.674980640411377)]
+	Location: 65
+Error 2:
+	Context: max!=min
+	Token: min
+	Real ID: 134
+	Prediction: [(161, 0.9938492178916931)]
+	Location: 66
+Error 3:
+	Context: !=min&&
+	Token: &&
+	Real ID: 76
+	Prediction: [(97, 0.9996370077133179)]
+	Location: 67
+----------------------------------------

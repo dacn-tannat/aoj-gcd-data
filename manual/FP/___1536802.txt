@@ -1,0 +1,976 @@
+judge_id 1536802
+raw_tokens:  ['#', 'include', '<', 'stdio', '.', 'h', '>', '#', 'include', '<', 'string', '.', 'h', '>', '#', 'include', '<', 'ctype', '.', 'h', '>', '#', 'include', '<', 'stdlib', '.', 'h', '>', '#', 'include', '<', 'math', '.', 'h', '>', 'const', 'int', 'sosu', '[', ']', '=', '{', 2, ',', 3, ',', 5, ',', 7, ',', 11, ',', 13, ',', 17, ',', 19, ',', 23, ',', 29, ',', 31, ',', 37, ',', 41, ',', 43, ',', 47, ',', 53, ',', 59, ',', 61, ',', 67, ',', 71, ',', 73, ',', 79, ',', 83, ',', 89, ',', 97, '}', ';', '#', 'define', 'SOSU_NUM', '(', 'sizeof', '(', 'sosu', ')', '/', 'sizeof', '(', 'int', ')', ')', 'int', 'func', '(', 'int', 'x', ',', 'int', '*', 'list_p', ')', '{', 'int', 'i', ';', 'int', 'wk', ';', 'for', '(', 'wk', '=', 'x', ',', 'i', '=', 'SOSU_NUM', '-', 1, ';', 'i', '>=', 0, ';', 'i', '--', ')', '{', 'if', '(', 'sosu', '[', 'i', ']', '>', 'wk', ')', '{', 'continue', ';', '}', 'if', '(', '(', 'wk', '%', 'sosu', '[', 'i', ']', ')', '==', 0, ')', '{', 'list_p', '[', 'i', ']', '++', ';', 'wk', '/=', 'sosu', '[', 'i', ']', ';', 'i', '++', ';', '}', '}', 'return', 0, ';', '}', 'int', 'main', '(', ')', '{', 'int', 'x', ',', 'y', ';', 'int', 'x_list', '[', 'SOSU_NUM', ']', ';', 'int', 'y_list', '[', 'SOSU_NUM', ']', ';', 'int', 'i', ';', 'int', 'mod', ';', 'int', 'k', ',', 'cnt', ';', 'char', 'inp', '[', 128, ']', ';', 'memset', '(', 'x_list', ',', "'\\0'", ',', 'sizeof', '(', 'x_list', ')', ')', ';', 'memset', '(', 'y_list', ',', "'\\0'", ',', 'sizeof', '(', 'y_list', ')', ')', ';', 'while', '(', 1, ')', '{', 'gets', '(', 'inp', ')', ';', 'sscanf', '(', 'inp', ',', '"%d %d"', ',', '&', 'x', ',', '&', 'y', ')', ';', 'func', '(', 'x', ',', 'x_list', ')', ';', 'func', '(', 'y', ',', 'y_list', ')', ';', 'for', '(', 'mod', '=', 1, ',', 'i', '=', 'SOSU_NUM', '-', 1, ';', 'i', '>=', 0, ';', 'i', '--', ')', '{', 'if', '(', '(', 'x_list', '[', 'i', ']', '!=', 0, ')', '&&', '(', 'y_list', '[', 'i', ']', '!=', 0, ')', ')', '{', 'if', '(', 'x_list', '[', 'i', ']', '>', 'y_list', '[', 'i', ']', ')', '{', 'cnt', '=', 'y_list', '[', 'i', ']', ';', '}', 'else', '{', 'cnt', '=', 'x_list', '[', 'i', ']', ';', '}', 'for', '(', 'k', '=', 0, ';', 'k', '<', 'cnt', ';', 'k', '++', ')', '{', 'mod', '*=', 'sosu', '[', 'i', ']', ';', '}', '}', '}', 'break', ';', '}', 'printf', '(', '"%d\\n"', ',', 'mod', ')', ';', 'return', 0, ';', '}']
+encoded_id:  [52, 127, 67, 128, 49, 129, 68, 52, 127, 67, 130, 49, 129, 68, 52, 127, 67, 131, 49, 129, 68, 52, 127, 67, 132, 49, 129, 68, 52, 127, 67, 133, 49, 129, 68, 14, 26, 134, 93, 94, 54, 98, 164, 92, 235, 92, 219, 92, 264, 92, 297, 92, 293, 92, 298, 92, 299, 92, 214, 92, 300, 92, 301, 92, 302, 92, 303, 92, 304, 92, 305, 92, 222, 92, 306, 92, 307, 92, 308, 92, 309, 92, 310, 92, 311, 92, 312, 92, 313, 92, 314, 99, 91, 52, 135, 136, 96, 32, 96, 134, 97, 58, 32, 96, 26, 97, 97, 26, 137, 96, 26, 138, 92, 26, 57, 139, 97, 98, 26, 140, 91, 26, 141, 91, 23, 96, 141, 54, 138, 92, 140, 54, 136, 56, 163, 91, 140, 70, 161, 91, 140, 72, 97, 98, 25, 96, 134, 93, 140, 94, 68, 141, 97, 98, 15, 91, 99, 25, 96, 96, 141, 59, 134, 93, 140, 94, 97, 65, 161, 97, 98, 139, 93, 140, 94, 71, 91, 141, 63, 134, 93, 140, 94, 91, 140, 71, 91, 99, 99, 29, 161, 91, 99, 26, 142, 96, 97, 98, 26, 138, 92, 143, 91, 26, 144, 93, 136, 94, 91, 26, 145, 93, 136, 94, 91, 26, 140, 91, 26, 146, 91, 26, 147, 92, 148, 91, 13, 149, 93, 315, 94, 91, 150, 96, 144, 92, 218, 92, 32, 96, 144, 97, 97, 91, 150, 96, 145, 92, 218, 92, 32, 96, 145, 97, 97, 91, 41, 96, 163, 97, 98, 151, 96, 149, 97, 91, 152, 96, 149, 92, 162, 92, 81, 138, 92, 81, 143, 97, 91, 137, 96, 138, 92, 144, 97, 91, 137, 96, 143, 92, 145, 97, 91, 23, 96, 146, 54, 163, 92, 140, 54, 136, 56, 163, 91, 140, 70, 161, 91, 140, 72, 97, 98, 25, 96, 96, 144, 93, 140, 94, 66, 161, 97, 76, 96, 145, 93, 140, 94, 66, 161, 97, 97, 98, 25, 96, 144, 93, 140, 94, 68, 145, 93, 140, 94, 97, 98, 148, 54, 145, 93, 140, 94, 91, 99, 19, 98, 148, 54, 144, 93, 140, 94, 91, 99, 23, 96, 147, 54, 161, 91, 147, 67, 148, 91, 147, 71, 97, 98, 146, 62, 134, 93, 140, 94, 91, 99, 99, 99, 11, 91, 99, 153, 96, 158, 92, 146, 97, 91, 29, 161, 91, 99]
+
+ #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <math.h>
+
+const int sosu[]={
+	2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97
+};
+#define SOSU_NUM (sizeof(sosu)/sizeof(int))
+
+int func(int x,int *list_p)
+{
+	int i;
+	int wk;
+	for(wk=x,i=SOSU_NUM-1 ; i>=0 ; i--) {
+		if (sosu[i] > wk) {
+			continue;
+		}
+
+		if ((wk % sosu[i])==0) {
+			list_p[i]++;
+			wk /= sosu[i];
+			i++;
+//			i=SOSU_NUM-1; 
+		}
+	}
+	return 0;
+
+}
+
+int main()
+{
+	int	   x,y;
+	int    x_list[SOSU_NUM];
+	int    y_list[SOSU_NUM];
+	int    i;
+	int    mod;
+	int    k,cnt;
+	char   inp[128];
+	memset(x_list,'\0',sizeof(x_list));
+	memset(y_list,'\0',sizeof(y_list));
+	while(1) {
+		gets(inp);
+		sscanf(inp,"%d %d",&x,&y);
+		/*--- CALC ---*/
+		func(x,x_list);
+		func(y,y_list);
+		for(mod=1,i=SOSU_NUM-1 ; i>=0 ; i--) {
+			if ((x_list[i]!=0)&&(y_list[i]!=0)) {
+				if (x_list[i] > y_list[i]) {
+					cnt = y_list[i];
+				}
+				else {
+					cnt = x_list[i];
+				}
+
+				for (k=0;k<cnt;k++) {
+					mod *= sosu[i];
+				}
+			}
+		}
+		break;
+	}
+	printf("%d\n",mod);
+	return 0;
+}
+
+======================================
+
+FALSE POSITIVE (src không có lỗi được dự đoán là có lỗi)
+
+======================================
+
+Incorrect answers: 179/403
+Error 0:
+	Token: #
+	Real ID: 52
+	Prediction: [(26, 0.8450437188148499)]
+	Location: 8
+Error 1:
+	Token: const
+	Real ID: 14
+	Prediction: [(36, 0.12044286727905273), (52, 0.14864249527454376), (33, 0.2876913249492645), (26, 0.31726014614105225)]
+	Location: 36
+Error 2:
+	Token: [
+	Real ID: 93
+	Prediction: [(96, 0.9952619075775146)]
+	Location: 39
+Error 3:
+	Token: ]
+	Real ID: 94
+	Prediction: [(181, 0.15528500080108643), (216, 0.26011013984680176), (164, 0.26814529299736023)]
+	Location: 40
+Error 4:
+	Token: =
+	Real ID: 54
+	Prediction: [(91, 0.9210631847381592)]
+	Location: 41
+Error 5:
+	Token: {
+	Real ID: 98
+	Prediction: [(56, 0.10566022992134094), (163, 0.2761041820049286), (161, 0.522016704082489)]
+	Location: 42
+Error 6:
+	Token: 2
+	Real ID: 164
+	Prediction: [(38, 0.2487187385559082), (27, 0.30749568343162537), (13, 0.3452400267124176)]
+	Location: 43
+Error 7:
+	Token: 3
+	Real ID: 235
+	Prediction: [(135, 0.874477207660675)]
+	Location: 45
+Error 8:
+	Token: 5
+	Real ID: 219
+	Prediction: [(135, 0.9605113863945007)]
+	Location: 47
+Error 9:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.2502674460411072), (54, 0.6283485293388367)]
+	Location: 48
+Error 10:
+	Token: 7
+	Real ID: 264
+	Prediction: [(135, 0.9640201926231384)]
+	Location: 49
+Error 11:
+	Token: ,
+	Real ID: 92
+	Prediction: [(135, 0.11822237819433212), (25, 0.14229781925678253), (96, 0.17889946699142456), (136, 0.2115965038537979)]
+	Location: 50
+Error 12:
+	Token: 11
+	Real ID: 297
+	Prediction: [(135, 0.11334098875522614), (136, 0.6658609509468079)]
+	Location: 51
+Error 13:
+	Token: ,
+	Real ID: 92
+	Prediction: [(54, 0.25996240973472595), (46, 0.4056418538093567)]
+	Location: 52
+Error 14:
+	Token: 13
+	Real ID: 293
+	Prediction: [(135, 0.10623740404844284), (132, 0.15035700798034668), (131, 0.15460720658302307), (136, 0.5248956084251404)]
+	Location: 53
+Error 15:
+	Token: ,
+	Real ID: 92
+	Prediction: [(97, 0.14094474911689758), (54, 0.16449110209941864), (91, 0.4241131544113159)]
+	Location: 54
+Error 16:
+	Token: 17
+	Real ID: 298
+	Prediction: [(136, 0.7358132004737854)]
+	Location: 55
+Error 17:
+	Token: ,
+	Real ID: 92
+	Prediction: [(54, 0.2306991070508957), (91, 0.42123907804489136)]
+	Location: 56
+Error 18:
+	Token: 19
+	Real ID: 299
+	Prediction: [(137, 0.11105798929929733), (132, 0.35589978098869324), (136, 0.49460917711257935)]
+	Location: 57
+Error 19:
+	Token: ,
+	Real ID: 92
+	Prediction: [(54, 0.26247188448905945), (91, 0.6186314821243286)]
+	Location: 58
+Error 20:
+	Token: 23
+	Real ID: 214
+	Prediction: [(137, 0.8156192302703857)]
+	Location: 59
+Error 21:
+	Token: 29
+	Real ID: 300
+	Prediction: [(139, 0.21011368930339813), (138, 0.6778443455696106)]
+	Location: 61
+Error 22:
+	Token: 31
+	Real ID: 301
+	Prediction: [(138, 0.22587239742279053), (137, 0.30214694142341614), (139, 0.32539311051368713)]
+	Location: 63
+Error 23:
+	Token: 37
+	Real ID: 302
+	Prediction: [(137, 0.11191713064908981), (138, 0.15096983313560486), (139, 0.5303356051445007)]
+	Location: 65
+Error 24:
+	Token: ,
+	Real ID: 92
+	Prediction: [(54, 0.14271096885204315), (91, 0.3160737454891205), (96, 0.35303807258605957)]
+	Location: 66
+Error 25:
+	Token: 41
+	Real ID: 303
+	Prediction: [(138, 0.1225828006863594), (139, 0.647192656993866)]
+	Location: 67
+Error 26:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.18333707749843597), (96, 0.46337011456489563)]
+	Location: 68
+Error 27:
+	Token: 43
+	Real ID: 304
+	Prediction: [(137, 0.2227850705385208), (139, 0.6340607404708862)]
+	Location: 69
+Error 28:
+	Token: ,
+	Real ID: 92
+	Prediction: [(54, 0.16692006587982178), (91, 0.2543061077594757), (96, 0.45010024309158325)]
+	Location: 70
+Error 29:
+	Token: 47
+	Real ID: 305
+	Prediction: [(137, 0.811602771282196)]
+	Location: 71
+Error 30:
+	Token: ,
+	Real ID: 92
+	Prediction: [(54, 0.12694121897220612), (91, 0.6128433346748352)]
+	Location: 72
+Error 31:
+	Token: 53
+	Real ID: 222
+	Prediction: [(139, 0.25825533270835876), (141, 0.598203182220459)]
+	Location: 73
+Error 32:
+	Token: ,
+	Real ID: 92
+	Prediction: [(26, 0.18747219443321228), (25, 0.21910838782787323), (139, 0.40993574261665344)]
+	Location: 74
+Error 33:
+	Token: 59
+	Real ID: 306
+	Prediction: [(141, 0.11981429159641266), (139, 0.7100464105606079)]
+	Location: 75
+Error 34:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.23990939557552338), (54, 0.5528610944747925)]
+	Location: 76
+Error 35:
+	Token: 61
+	Real ID: 307
+	Prediction: [(141, 0.29684191942214966), (139, 0.5397629737854004)]
+	Location: 77
+Error 36:
+	Token: ,
+	Real ID: 92
+	Prediction: [(139, 0.1326950043439865), (54, 0.160720095038414), (91, 0.5175043940544128)]
+	Location: 78
+Error 37:
+	Token: 67
+	Real ID: 308
+	Prediction: [(141, 0.37720251083374023), (139, 0.470885694026947)]
+	Location: 79
+Error 38:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.198068767786026), (96, 0.21795491874217987), (54, 0.42594224214553833)]
+	Location: 80
+Error 39:
+	Token: 71
+	Real ID: 309
+	Prediction: [(139, 0.6731130480766296)]
+	Location: 81
+Error 40:
+	Token: ,
+	Real ID: 92
+	Prediction: [(62, 0.20499923825263977), (96, 0.21806451678276062), (54, 0.3836576044559479)]
+	Location: 82
+Error 41:
+	Token: 73
+	Real ID: 310
+	Prediction: [(136, 0.12534549832344055), (146, 0.15579074621200562), (141, 0.3400050103664398)]
+	Location: 83
+Error 42:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.24433544278144836), (54, 0.6060450077056885)]
+	Location: 84
+Error 43:
+	Token: 79
+	Real ID: 311
+	Prediction: [(139, 0.1250901073217392), (144, 0.27939072251319885), (141, 0.3312109708786011)]
+	Location: 85
+Error 44:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.18861311674118042), (62, 0.22381137311458588), (54, 0.3415079414844513)]
+	Location: 86
+Error 45:
+	Token: 83
+	Real ID: 312
+	Prediction: [(141, 0.10496804118156433), (139, 0.8022163510322571)]
+	Location: 87
+Error 46:
+	Token: ,
+	Real ID: 92
+	Prediction: [(54, 0.2497934252023697), (91, 0.5946599841117859)]
+	Location: 88
+Error 47:
+	Token: 89
+	Real ID: 313
+	Prediction: [(144, 0.1189567819237709), (141, 0.12734389305114746), (146, 0.36319753527641296)]
+	Location: 89
+Error 48:
+	Token: 97
+	Real ID: 314
+	Prediction: [(132, 0.1845230609178543), (141, 0.37651097774505615)]
+	Location: 91
+Error 49:
+	Token: }
+	Real ID: 99
+	Prediction: [(92, 0.11970233917236328), (96, 0.1300908476114273), (91, 0.21206222474575043), (54, 0.5008385181427002)]
+	Location: 92
+Error 50:
+	Token: ;
+	Real ID: 91
+	Prediction: [(26, 0.36281922459602356)]
+	Location: 93
+Error 51:
+	Token: #
+	Real ID: 52
+	Prediction: [(26, 0.6900070905685425)]
+	Location: 94
+Error 52:
+	Token: define
+	Real ID: 135
+	Prediction: [(130, 0.129830464720726), (127, 0.15861943364143372), (136, 0.36966753005981445)]
+	Location: 95
+Error 53:
+	Token: SOSU_NUM
+	Real ID: 136
+	Prediction: [(54, 0.141768679022789), (164, 0.3723689615726471)]
+	Location: 96
+Error 54:
+	Token: (
+	Real ID: 96
+	Prediction: [(54, 0.9176394939422607)]
+	Location: 97
+Error 55:
+	Token: sizeof
+	Real ID: 32
+	Prediction: [(158, 0.8504864573478699)]
+	Location: 98
+Error 56:
+	Token: sosu
+	Real ID: 134
+	Prediction: [(135, 0.10855766385793686), (133, 0.12790797650814056), (136, 0.12821270525455475), (26, 0.14991219341754913), (137, 0.3191032409667969)]
+	Location: 100
+Error 57:
+	Token: )
+	Real ID: 97
+	Prediction: [(92, 0.9983822107315063)]
+	Location: 101
+Error 58:
+	Token: /
+	Real ID: 58
+	Prediction: [(76, 0.11475663632154465), (91, 0.24442343413829803), (97, 0.49505990743637085)]
+	Location: 102
+Error 59:
+	Token: sizeof
+	Real ID: 32
+	Prediction: [(96, 0.873593270778656)]
+	Location: 103
+Error 60:
+	Token: int
+	Real ID: 26
+	Prediction: [(136, 0.12425664067268372), (137, 0.7463862299919128)]
+	Location: 105
+Error 61:
+	Token: )
+	Real ID: 97
+	Prediction: [(134, 0.10648498684167862), (137, 0.5647275447845459)]
+	Location: 106
+Error 62:
+	Token: )
+	Real ID: 97
+	Prediction: [(96, 0.1269771307706833), (91, 0.7839957475662231)]
+	Location: 107
+Error 63:
+	Token: int
+	Real ID: 26
+	Prediction: [(91, 0.9945736527442932)]
+	Location: 108
+Error 64:
+	Token: (
+	Real ID: 96
+	Prediction: [(91, 0.10864172130823135), (92, 0.11498933285474777), (54, 0.771144688129425)]
+	Location: 110
+Error 65:
+	Token: *
+	Real ID: 57
+	Prediction: [(139, 0.8156993389129639)]
+	Location: 115
+Error 66:
+	Token: int
+	Real ID: 26
+	Prediction: [(41, 0.2218509018421173), (140, 0.23595301806926727), (25, 0.2992003560066223)]
+	Location: 122
+Error 67:
+	Token: for
+	Real ID: 23
+	Prediction: [(143, 0.1341620683670044), (25, 0.1686290204524994), (140, 0.20220230519771576), (142, 0.3159697949886322)]
+	Location: 125
+Error 68:
+	Token: x
+	Real ID: 138
+	Prediction: [(163, 0.10195615142583847), (161, 0.1675562858581543), (140, 0.6447219848632812)]
+	Location: 129
+Error 69:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.911510169506073)]
+	Location: 130
+Error 70:
+	Token: i
+	Real ID: 140
+	Prediction: [(141, 0.9685012698173523)]
+	Location: 131
+Error 71:
+	Token: =
+	Real ID: 54
+	Prediction: [(91, 0.6462219953536987)]
+	Location: 132
+Error 72:
+	Token: SOSU_NUM
+	Real ID: 136
+	Prediction: [(141, 0.16005025804042816), (163, 0.19779348373413086), (140, 0.43630850315093994)]
+	Location: 133
+Error 73:
+	Token: -
+	Real ID: 56
+	Prediction: [(91, 0.936578631401062)]
+	Location: 134
+Error 74:
+	Token: 1
+	Real ID: 163
+	Prediction: [(140, 0.8997564315795898)]
+	Location: 135
+Error 75:
+	Token: sosu
+	Real ID: 134
+	Prediction: [(138, 0.14256814122200012), (141, 0.1441182941198349), (139, 0.14888398349285126), (140, 0.15283825993537903), (96, 0.27598991990089417)]
+	Location: 147
+Error 76:
+	Token: [
+	Real ID: 93
+	Prediction: [(59, 0.949248194694519)]
+	Location: 148
+Error 77:
+	Token: >
+	Real ID: 68
+	Prediction: [(70, 0.13466010987758636), (67, 0.1459994614124298), (65, 0.14698526263237), (59, 0.3771691918373108)]
+	Location: 151
+Error 78:
+	Token: wk
+	Real ID: 141
+	Prediction: [(140, 0.635308563709259)]
+	Location: 152
+Error 79:
+	Token: continue
+	Real ID: 15
+	Prediction: [(25, 0.7353991866111755)]
+	Location: 155
+Error 80:
+	Token: %
+	Real ID: 59
+	Prediction: [(67, 0.25508636236190796), (70, 0.2807410955429077), (93, 0.3852008283138275)]
+	Location: 162
+Error 81:
+	Token: sosu
+	Real ID: 134
+	Prediction: [(142, 0.3581996560096741), (140, 0.5153615474700928)]
+	Location: 163
+Error 82:
+	Token: list_p
+	Real ID: 139
+	Prediction: [(136, 0.10863523930311203), (142, 0.15422895550727844)]
+	Location: 172
+Error 83:
+	Token: ]
+	Real ID: 94
+	Prediction: [(55, 0.9490819573402405)]
+	Location: 175
+Error 84:
+	Token: ++
+	Real ID: 71
+	Prediction: [(54, 0.8683456778526306)]
+	Location: 176
+Error 85:
+	Token: wk
+	Real ID: 141
+	Prediction: [(99, 0.9605327248573303)]
+	Location: 178
+Error 86:
+	Token: /=
+	Real ID: 63
+	Prediction: [(54, 0.8745601773262024)]
+	Location: 179
+Error 87:
+	Token: sosu
+	Real ID: 134
+	Prediction: [(175, 0.35966476798057556)]
+	Location: 180
+Error 88:
+	Token: [
+	Real ID: 93
+	Prediction: [(94, 0.21482251584529877), (55, 0.7399194836616516)]
+	Location: 181
+Error 89:
+	Token: int
+	Real ID: 26
+	Prediction: [(143, 0.10014795511960983), (99, 0.12263314425945282), (142, 0.1375141739845276), (144, 0.24620716273784637)]
+	Location: 194
+Error 90:
+	Token: main
+	Real ID: 142
+	Prediction: [(133, 0.13398592174053192), (143, 0.14048142731189728), (141, 0.2936835289001465)]
+	Location: 195
+Error 91:
+	Token: x
+	Real ID: 138
+	Prediction: [(132, 0.13842789828777313), (144, 0.4463748335838318)]
+	Location: 200
+Error 92:
+	Token: y
+	Real ID: 143
+	Prediction: [(144, 0.2977931797504425), (139, 0.4992857575416565)]
+	Location: 202
+Error 93:
+	Token: int
+	Real ID: 26
+	Prediction: [(143, 0.25896093249320984), (144, 0.606270432472229)]
+	Location: 204
+Error 94:
+	Token: x_list
+	Real ID: 144
+	Prediction: [(146, 0.13909706473350525), (142, 0.23079779744148254), (143, 0.2855795919895172)]
+	Location: 205
+Error 95:
+	Token: [
+	Real ID: 93
+	Prediction: [(91, 0.4021550118923187), (92, 0.5789222121238708)]
+	Location: 206
+Error 96:
+	Token: SOSU_NUM
+	Real ID: 136
+	Prediction: [(177, 0.3193194270133972), (164, 0.4546448290348053)]
+	Location: 207
+Error 97:
+	Token: y_list
+	Real ID: 145
+	Prediction: [(142, 0.24149534106254578), (140, 0.4816822409629822)]
+	Location: 211
+Error 98:
+	Token: [
+	Real ID: 93
+	Prediction: [(91, 0.25885531306266785), (54, 0.6370771527290344)]
+	Location: 212
+Error 99:
+	Token: SOSU_NUM
+	Real ID: 136
+	Prediction: [(163, 0.21159087121486664), (164, 0.24367792904376984), (161, 0.4277285933494568)]
+	Location: 213
+Error 100:
+	Token: mod
+	Real ID: 146
+	Prediction: [(141, 0.8992389440536499)]
+	Location: 220
+Error 101:
+	Token: int
+	Real ID: 26
+	Prediction: [(143, 0.13580556213855743), (144, 0.36798223853111267)]
+	Location: 222
+Error 102:
+	Token: k
+	Real ID: 147
+	Prediction: [(141, 0.16418668627738953), (143, 0.1868528127670288), (140, 0.2828577756881714)]
+	Location: 223
+Error 103:
+	Token: cnt
+	Real ID: 148
+	Prediction: [(143, 0.13314630091190338), (146, 0.17142429947853088), (142, 0.20465455949306488), (144, 0.4478083848953247)]
+	Location: 225
+Error 104:
+	Token: char
+	Real ID: 13
+	Prediction: [(26, 0.14170250296592712), (144, 0.16220258176326752), (143, 0.4526629149913788)]
+	Location: 227
+Error 105:
+	Token: inp
+	Real ID: 149
+	Prediction: [(143, 0.10179352015256882), (163, 0.4759034812450409)]
+	Location: 228
+Error 106:
+	Token: [
+	Real ID: 93
+	Prediction: [(143, 0.7502683997154236)]
+	Location: 229
+Error 107:
+	Token: 128
+	Real ID: 315
+	Prediction: [(216, 0.14233548939228058), (163, 0.18826542794704437), (161, 0.21796481311321259), (164, 0.27328354120254517)]
+	Location: 230
+Error 108:
+	Token: memset
+	Real ID: 150
+	Prediction: [(26, 0.2246306836605072), (136, 0.22780053317546844)]
+	Location: 233
+Error 109:
+	Token: x_list
+	Real ID: 144
+	Prediction: [(137, 0.13594000041484833), (136, 0.16074714064598083), (138, 0.22444207966327667), (135, 0.30428993701934814)]
+	Location: 235
+Error 110:
+	Token: '\0'
+	Real ID: 218
+	Prediction: [(81, 0.14863812923431396), (169, 0.17052365839481354), (150, 0.26318979263305664)]
+	Location: 237
+Error 111:
+	Token: ,
+	Real ID: 92
+	Prediction: [(99, 0.9178590178489685)]
+	Location: 238
+Error 112:
+	Token: sizeof
+	Real ID: 32
+	Prediction: [(164, 0.14499403536319733), (163, 0.20222893357276917)]
+	Location: 239
+Error 113:
+	Token: x_list
+	Real ID: 144
+	Prediction: [(136, 0.8437920808792114)]
+	Location: 241
+Error 114:
+	Token: memset
+	Real ID: 150
+	Prediction: [(25, 0.1486421823501587), (136, 0.2019767463207245)]
+	Location: 245
+Error 115:
+	Token: y_list
+	Real ID: 145
+	Prediction: [(142, 0.1893165409564972), (136, 0.28178367018699646), (141, 0.3183292746543884)]
+	Location: 247
+Error 116:
+	Token: '\0'
+	Real ID: 218
+	Prediction: [(146, 0.9436184763908386)]
+	Location: 249
+Error 117:
+	Token: ,
+	Real ID: 92
+	Prediction: [(97, 0.11743791401386261), (93, 0.7909971475601196)]
+	Location: 250
+Error 118:
+	Token: sizeof
+	Real ID: 32
+	Prediction: [(56, 0.13090460002422333), (146, 0.6144391894340515)]
+	Location: 251
+Error 119:
+	Token: y_list
+	Real ID: 145
+	Prediction: [(142, 0.10692264884710312), (146, 0.40335917472839355), (136, 0.40747275948524475)]
+	Location: 253
+Error 120:
+	Token: while
+	Real ID: 41
+	Prediction: [(29, 0.10140759497880936), (99, 0.11568894237279892), (145, 0.13511137664318085)]
+	Location: 257
+Error 121:
+	Token: 1
+	Real ID: 163
+	Prediction: [(142, 0.10880142450332642), (141, 0.13845175504684448), (136, 0.18305644392967224), (146, 0.3403528928756714)]
+	Location: 259
+Error 122:
+	Token: gets
+	Real ID: 151
+	Prediction: [(25, 0.8343175053596497)]
+	Location: 262
+Error 123:
+	Token: inp
+	Real ID: 149
+	Prediction: [(187, 0.3015148639678955), (158, 0.30258801579475403)]
+	Location: 264
+Error 124:
+	Token: sscanf
+	Real ID: 152
+	Prediction: [(25, 0.1244342178106308), (96, 0.15449045598506927), (148, 0.16698594391345978), (99, 0.20505297183990479)]
+	Location: 267
+Error 125:
+	Token: inp
+	Real ID: 149
+	Prediction: [(138, 0.13303522765636444), (167, 0.1395052820444107), (146, 0.49725839495658875)]
+	Location: 269
+Error 126:
+	Token: "%d %d"
+	Real ID: 162
+	Prediction: [(97, 0.12956194579601288), (146, 0.37516510486602783)]
+	Location: 271
+Error 127:
+	Token: ,
+	Real ID: 92
+	Prediction: [(97, 0.9513515830039978)]
+	Location: 272
+Error 128:
+	Token: x
+	Real ID: 138
+	Prediction: [(132, 0.10613268613815308), (142, 0.20262646675109863), (146, 0.41106897592544556)]
+	Location: 274
+Error 129:
+	Token: ,
+	Real ID: 92
+	Prediction: [(97, 0.9972510933876038)]
+	Location: 275
+Error 130:
+	Token: &
+	Real ID: 81
+	Prediction: [(146, 0.7236155271530151)]
+	Location: 276
+Error 131:
+	Token: y
+	Real ID: 143
+	Prediction: [(146, 0.8547027111053467)]
+	Location: 277
+Error 132:
+	Token: func
+	Real ID: 137
+	Prediction: [(25, 0.11427517235279083), (160, 0.6069427728652954)]
+	Location: 280
+Error 133:
+	Token: x
+	Real ID: 138
+	Prediction: [(158, 0.13297061622142792), (160, 0.1855706423521042)]
+	Location: 282
+Error 134:
+	Token: x_list
+	Real ID: 144
+	Prediction: [(146, 0.893325924873352)]
+	Location: 284
+Error 135:
+	Token: func
+	Real ID: 137
+	Prediction: [(29, 0.10180125385522842), (99, 0.5206994414329529)]
+	Location: 287
+Error 136:
+	Token: y
+	Real ID: 143
+	Prediction: [(158, 0.5029263496398926)]
+	Location: 289
+Error 137:
+	Token: y_list
+	Real ID: 145
+	Prediction: [(144, 0.12954851984977722), (158, 0.15459293127059937), (141, 0.23811079561710358)]
+	Location: 291
+Error 138:
+	Token: for
+	Real ID: 23
+	Prediction: [(25, 0.10467419028282166), (99, 0.11246418207883835), (137, 0.11601392179727554), (26, 0.11884503811597824), (136, 0.19231894612312317)]
+	Location: 294
+Error 139:
+	Token: mod
+	Real ID: 146
+	Prediction: [(26, 0.8876460790634155)]
+	Location: 296
+Error 140:
+	Token: ,
+	Real ID: 92
+	Prediction: [(91, 0.9813635349273682)]
+	Location: 299
+Error 141:
+	Token: =
+	Real ID: 54
+	Prediction: [(91, 0.12681053578853607), (92, 0.13150890171527863), (70, 0.2285035103559494), (69, 0.23147569596767426)]
+	Location: 301
+Error 142:
+	Token: SOSU_NUM
+	Real ID: 136
+	Prediction: [(56, 0.1290425807237625), (161, 0.5630903244018555)]
+	Location: 302
+Error 143:
+	Token: 1
+	Real ID: 163
+	Prediction: [(143, 0.12241965532302856), (142, 0.2092859297990799), (144, 0.4180546700954437)]
+	Location: 304
+Error 144:
+	Token: >=
+	Real ID: 70
+	Prediction: [(72, 0.9555443525314331)]
+	Location: 307
+Error 145:
+	Token: x_list
+	Real ID: 144
+	Prediction: [(140, 0.12129198759794235), (135, 0.14323878288269043), (136, 0.1508791446685791), (138, 0.4390658140182495)]
+	Location: 317
+Error 146:
+	Token: [
+	Real ID: 93
+	Prediction: [(96, 0.9561799764633179)]
+	Location: 318
+Error 147:
+	Token: !=
+	Real ID: 66
+	Prediction: [(92, 0.13007919490337372), (69, 0.1395999938249588), (76, 0.21465229988098145), (97, 0.27085059881210327)]
+	Location: 321
+Error 148:
+	Token: &&
+	Real ID: 76
+	Prediction: [(93, 0.6926580667495728)]
+	Location: 324
+Error 149:
+	Token: y_list
+	Real ID: 145
+	Prediction: [(146, 0.2887807786464691), (138, 0.545963704586029)]
+	Location: 326
+Error 150:
+	Token: [
+	Real ID: 93
+	Prediction: [(67, 0.1012013852596283), (48, 0.6803520917892456)]
+	Location: 327
+Error 151:
+	Token: !=
+	Real ID: 66
+	Prediction: [(67, 0.10764487087726593), (68, 0.17946162819862366), (97, 0.2206614762544632), (48, 0.30345019698143005)]
+	Location: 330
+Error 152:
+	Token: )
+	Real ID: 97
+	Prediction: [(146, 0.10884488373994827), (93, 0.8421380519866943)]
+	Location: 333
+Error 153:
+	Token: if
+	Real ID: 25
+	Prediction: [(96, 0.8622464537620544)]
+	Location: 335
+Error 154:
+	Token: x_list
+	Real ID: 144
+	Prediction: [(138, 0.30346888303756714), (96, 0.48298734426498413)]
+	Location: 337
+Error 155:
+	Token: [
+	Real ID: 93
+	Prediction: [(96, 0.9300750494003296)]
+	Location: 338
+Error 156:
+	Token: y_list
+	Real ID: 145
+	Prediction: [(140, 0.2374718338251114), (146, 0.45233848690986633)]
+	Location: 342
+Error 157:
+	Token: [
+	Real ID: 93
+	Prediction: [(97, 0.8425038456916809)]
+	Location: 343
+Error 158:
+	Token: cnt
+	Real ID: 148
+	Prediction: [(142, 0.17643903195858002), (138, 0.1782526969909668), (146, 0.3454633057117462)]
+	Location: 348
+Error 159:
+	Token: y_list
+	Real ID: 145
+	Prediction: [(142, 0.26800546050071716)]
+	Location: 350
+Error 160:
+	Token: [
+	Real ID: 93
+	Prediction: [(96, 0.363017201423645), (91, 0.5321298241615295)]
+	Location: 351
+Error 161:
+	Token: }
+	Real ID: 99
+	Prediction: [(140, 0.49193504452705383)]
+	Location: 355
+Error 162:
+	Token: cnt
+	Real ID: 148
+	Prediction: [(146, 0.10030926018953323), (96, 0.6832537651062012)]
+	Location: 358
+Error 163:
+	Token: x_list
+	Real ID: 144
+	Prediction: [(141, 0.11384709179401398), (136, 0.27157893776893616)]
+	Location: 360
+Error 164:
+	Token: [
+	Real ID: 93
+	Prediction: [(91, 0.1897750347852707), (96, 0.2105027139186859), (59, 0.5894781947135925)]
+	Location: 361
+Error 165:
+	Token: }
+	Real ID: 99
+	Prediction: [(146, 0.11660516262054443), (141, 0.1523737758398056), (140, 0.43121978640556335)]
+	Location: 365
+Error 166:
+	Token: for
+	Real ID: 23
+	Prediction: [(29, 0.11250414699316025), (145, 0.11875899881124496), (19, 0.11920848488807678), (41, 0.16517247259616852)]
+	Location: 366
+Error 167:
+	Token: k
+	Real ID: 147
+	Prediction: [(141, 0.17055226862430573), (26, 0.5868128538131714)]
+	Location: 368
+Error 168:
+	Token: k
+	Real ID: 147
+	Prediction: [(140, 0.8205116987228394)]
+	Location: 372
+Error 169:
+	Token: cnt
+	Real ID: 148
+	Prediction: [(146, 0.3360384702682495), (141, 0.3469339609146118)]
+	Location: 374
+Error 170:
+	Token: k
+	Real ID: 147
+	Prediction: [(71, 0.10978756099939346), (70, 0.17953872680664062), (140, 0.474199503660202)]
+	Location: 376
+Error 171:
+	Token: ++
+	Real ID: 71
+	Prediction: [(91, 0.265243262052536), (97, 0.6524713039398193)]
+	Location: 377
+Error 172:
+	Token: mod
+	Real ID: 146
+	Prediction: [(25, 0.3548986315727234), (96, 0.36007460951805115)]
+	Location: 380
+Error 173:
+	Token: *=
+	Real ID: 62
+	Prediction: [(54, 0.19309072196483612), (96, 0.19703659415245056), (48, 0.4846114218235016)]
+	Location: 381
+Error 174:
+	Token: sosu
+	Real ID: 134
+	Prediction: [(175, 0.8187185525894165)]
+	Location: 382
+Error 175:
+	Token: [
+	Real ID: 93
+	Prediction: [(91, 0.8984044194221497)]
+	Location: 383
+Error 176:
+	Token: break
+	Real ID: 11
+	Prediction: [(39, 0.8213170766830444)]
+	Location: 390
+Error 177:
+	Token: printf
+	Real ID: 153
+	Prediction: [(39, 0.6401228904724121)]
+	Location: 393
+Error 178:
+	Token: "%d\n"
+	Real ID: 158
+	Prediction: [(96, 0.11006056517362595), (148, 0.16255126893520355), (138, 0.2566254138946533)]
+	Location: 395
+----------------------------------------
+REAL BUG:

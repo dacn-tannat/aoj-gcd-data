@@ -2,7 +2,7 @@ import re
 from .lexer.CLexer import CLexer
 from .encoder.CTokenEncoder import CTokenEncoder
 
-def filter(src_list):
+def filter_invalid_source_codes(src_list):
     """
     Filter the source code list to remove entries with invalid or unwanted content.
 
@@ -57,15 +57,15 @@ def tokenize_and_encode(src_list):
         encoder.reset_id()
         
         # Tokenize source code into raw tokens
-        raw_tokens = lexer.tokenize(source_code)
-        raw_tokens_value = [token[1] for token in raw_tokens]
+        raw_tokens = lexer.tokenize(source_code) # list of (token_type, token_value)
+        raw_tokens_value = [token[1] for token in raw_tokens] 
         src['raw_tokens'] = raw_tokens_value
         
         # Encode raw tokens into numerical format
         encoded_tokens = encoder.encode_tokens(raw_tokens)
         src['encoded_tokens'] = encoded_tokens
     
-    literal_map = encoder.get_literal_map()
-    filter_src_list = filter(src_list)
+    literal_map = encoder.get_vocab_map()
+    filter_src_list = filter_invalid_source_codes(src_list)
     
     return literal_map, filter_src_list
