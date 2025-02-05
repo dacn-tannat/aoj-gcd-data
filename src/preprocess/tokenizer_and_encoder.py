@@ -1,6 +1,8 @@
 import re
 from .lexer.CLexer import CLexer
 from .encoder.CTokenEncoder import CTokenEncoder
+from services.json_services import *
+from .oov_handler import *
 
 def filter_invalid_source_codes(src_list):
     """
@@ -29,26 +31,7 @@ def filter_invalid_source_codes(src_list):
     ]
     return filtered_data
 
-def tokenize_and_encode(src_list):
-    """
-    Tokenize and encode the source code in the given list.
-
-    Args:
-        src_list (list): A list of dictionaries containing source code information.
-
-    Returns:
-        list: A filtered list of dictionaries with added 'raw_tokens' and 'encoded_tokens' fields.
-
-    This function performs the following steps for each source code entry:
-    1. Tokenizes the source code using CLexer.
-    2. Extracts the token values and adds them to the entry as 'raw_tokens'.
-    3. Encodes the raw tokens into a numerical format using CTokenEncoder.
-    4. Adds the encoded tokens to the entry as 'encoded_tokens'.
-    5. Filters the processed list to remove invalid entries.
-
-    Note:
-        This function modifies the input list in-place before filtering.
-    """
+def tokenize_and_encode_train_data(src_list):
     lexer = CLexer()
     encoder = CTokenEncoder()
     for src in src_list:
@@ -65,7 +48,36 @@ def tokenize_and_encode(src_list):
         encoded_tokens = encoder.encode_tokens(raw_tokens)
         src['encoded_tokens'] = encoded_tokens
     
-    literal_map = encoder.get_vocab_map()
+    vocab_map = encoder.get_vocab_map()
+    literal_map = encoder.get_literal_map()
     filter_src_list = filter_invalid_source_codes(src_list)
     
-    return literal_map, filter_src_list
+    return filter_src_list, vocab_map, literal_map
+
+def tokenize_and_encode_metrics_data(src_list):
+    lexer = CLexer()
+    literal_map = read_json_file(file_name='literal_map_data.json')
+    encoder = CTokenEncoder(literal_map=literal_map)
+    
+    for src in src_list: 
+        source_code = src['source_code']
+        
+        encoder.reset_id()
+        
+        # Tokenize source code into raw tokens
+        raw_tokens = lexer.tokenize(source_code) # list of (token_type, token_value)
+        raw_tokens_value = [token[1] for token in raw_tokens] # list of token_value
+        src['raw_tokens'] = raw_tokens_value
+        
+        # Encode raw token into numerical token, by using vocab
+        encoded_tokens = encoder.encode_tokens(raw_tokens, is_train_data=False)
+        src['encoded_tokens'] = encoded_tokens
+        
+        # Get oov_tokens
+        oov_tokens = encoder.get_oov_tokens()
+        
+    return src_list, oov_tokens
+
+        
+        
+    

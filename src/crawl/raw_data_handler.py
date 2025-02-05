@@ -3,7 +3,7 @@ from utils.apis import fetch_problem_submission_records
 from .review_handler import handle_review_data_with_threads
 from services.json_services import save_json_file
 
-def get_raw_data():
+def get_raw_data(status):
     """
     Fetch and process raw data for the GCD problem submissions.
 
@@ -29,10 +29,10 @@ def get_raw_data():
             'status': submission.get('status')
         }
         for submission in submission_records 
-        if submission.get('language') == 'C' and submission.get('status') == 4
+        if submission.get('language') == 'C' and submission.get('status') == status
     ]
     raw_data = handle_review_data_with_threads(judge_ids)
     
-    save_json_file(data=raw_data, file_name='raw_data.json')
+    save_json_file(data=raw_data, file_name=f'raw_data_status_{status}.json')
     
     return raw_data

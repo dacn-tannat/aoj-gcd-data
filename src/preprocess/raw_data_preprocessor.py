@@ -19,8 +19,9 @@ def preprocess_raw_data(raw_data):
     Note:
         The preprocessed data is saved to disk, allowing for easy retrieval in future processing steps.
     """
-    vocab_map, preprocessed_data = tokenize_and_encode(raw_data)
-    save_json_file(preprocessed_data, 'preprocessed_data.json')
+    preprocessed_data, vocab_map, literal_map = tokenize_and_encode_train_data(raw_data)
+    save_json_file(preprocessed_data, 'processed_train_data.json')
     save_json_file(vocab_map, 'vocab_map_data.json')
+    save_json_file(literal_map, 'literal_map_data.json')
     
     return preprocessed_data

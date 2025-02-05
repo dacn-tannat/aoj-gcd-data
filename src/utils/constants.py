@@ -9,6 +9,8 @@ BASE_URL = 'https://judgeapi.u-aizu.ac.jp'
 SUBMISSION_RECORDS = 'submission_records'
 PROBLEMS = 'problems'
 REVIEWS = 'reviews'
+VERDICTS = 'verdicts'
+USERS = 'users'
 
 # Submit code
 SELF = 'self'

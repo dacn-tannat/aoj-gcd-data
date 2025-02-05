@@ -31,4 +31,13 @@ def merge_data(raw_data, processed_data, shuffle=False):
     # Bước 6: Ghi dữ liệu đã gộp vào file mới
     return merged_data
     
+def split_by_errors(src_list):
+    src_with_errors = []
+    src_without_errors = []
+    for src in src_list:
+        if len(src["bug_positions"]) > 0: src_with_errors.append(src)
+        else: src_without_errors.append(src)
+
+    save_json_file(data=src_with_errors, file_name='with_errors_metrics_data')
+    save_json_file(data=src_without_errors, file_name='without_errors_metrics_data')
     

@@ -1,11 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from utils.apis import *
-import re
-
-def add_escape_chars(text):
-    # Thêm một dấu `\` trước các ký tự escape chỉ khi chúng nằm trong chuỗi dấu nháy kép "..."
-    # Điều kiện `(?<=\\)` đảm bảo chỉ thêm \ khi escape character đã có một dấu \ trước đó.
-    return re.sub(r'(?<=\\)(n|t|r|")', r'\1', text)
 
 def get_review_data(judge_id, status):
     """
